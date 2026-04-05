@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <form action="">
+    <form action="insert.php" method="post">
         <h1>admission form</h1>
         <input type="text" name="username" id="uname" placeholder="Your Name"><br><br>
 
@@ -59,6 +59,59 @@
 
         
     </form>
+    <script>
+document.querySelector("form").addEventListener("submit", function(e) {
 
+    let name = document.getElementById("uname").value.trim();
+    let fatherName = document.getElementById("fname").value.trim();
+    let nic = document.getElementById("nic").value.trim();
+    let bform = document.getElementById("bfornum").value.trim();
+    let dob = document.getElementById("dob").value;
+    let address = document.getElementById("address").value.trim();
+
+    // Name validation
+    if (name === "") {
+        alert("Please enter your name");
+        e.preventDefault();
+        return;
+    }
+
+    // Father name validation
+    if (fatherName === "") {
+        alert("Please enter your father name");
+        e.preventDefault();
+        return;
+    }
+
+    // NIC validation (13 digits)
+    if (nic.length !== 13 || isNaN(nic)) {
+        alert("Father NIC must be 13 digits");
+        e.preventDefault();
+        return;
+    }
+
+    // B-form / NIC validation (13 digits)
+    if (bform.length !== 13 || isNaN(bform)) {
+        alert("B-Form/NIC must be 13 digits");
+        e.preventDefault();
+        return;
+    }
+
+    // Date validation
+    if (dob === "") {
+        alert("Please select your date of birth");
+        e.preventDefault();
+        return;
+    }
+
+    // Address validation
+    if (address === "") {
+        alert("Please enter your address");
+        e.preventDefault();
+        return;
+    }
+
+});
+</script>
 </body>
 </html>
